@@ -1,21 +1,22 @@
-React and Redux: Use Provider to Connect Redux to React
-In the last challenge, you created a Redux store to handle the messages array and created an action for adding new messages. The next step is to provide React access to the Redux store and the actions it needs to dispatch updates. React Redux provides its react-redux package to help accomplish these tasks.
+React: Create a Controlled Form
+The last challenge showed that React can control the internal state for certain elements like input and textarea, which makes them controlled components. This applies to other form elements as well, including the regular HTML form element.
 
-React Redux provides a small API with two key features: Provider and connect. Another challenge covers connect. The Provider is a wrapper component from React Redux that wraps your React app. This wrapper then allows you to access the Redux store and dispatch functions throughout your component tree. Provider takes two props, the Redux store and the child components of your app. Defining the Provider for an App component might look like this:
 
-<Provider store={store}>
-  <App/>
-</Provider>
+The MyForm component is set up with an empty form with a submit handler. The submit handler will be called when the form is submitted.
 
-The code editor now shows all your Redux and React code from the past several challenges. It includes the Redux store, actions, and the DisplayMessages component. The only new piece is the AppWrapper component at the bottom. Use this top level component to render the Provider from ReactRedux, and pass the Redux store as a prop. Then render the DisplayMessages component as a child. Once you are finished, you should see your React component rendered to the page.
+We've added a button which submits the form. You can see it has the type set to submit indicating it is the button controlling the form. Add the input element in the form and set its value and onChange() attributes like the last challenge. You should then complete the handleSubmit method so that it sets the component state property submit to the current input value in the local state.
 
-Note: React Redux is available as a global variable here, so you can access the Provider with dot notation. The code in the editor takes advantage of this and sets it to a constant Provider for you to use in the AppWrapper render method.
+Note:  You also must call event.preventDefault() in the submit handler, to prevent the default form submit behavior which will refresh the web page.
+
+Finally, create an h1 tag after the form which renders the submit value from the component's state. You can then type in the form and click the button (or press enter), and you should see your input rendered to the page.
 
 Passed
-The AppWrapper should render.
+MyForm should return a div element which contains a form and an h1 tag. The form should include an input and a button.
 Passed
-The Provider wrapper component should have a prop of store passed to it, equal to the Redux store.
+The state of MyForm should initialize with input and submit properties, both set to empty strings.
 Passed
-DisplayMessages should render as a child of AppWrapper.
+Submitting the form should run handleSubmit which should set the submit property in state equal to the current input.
 Passed
-The DisplayMessages component should render an h2, input, button, and ul element.
+The h1 header should render the value of the submit field from the component's state.
+Passed
+Typing in the input element should update the input property of the component's state.
