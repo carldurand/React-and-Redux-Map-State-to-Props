@@ -1,38 +1,45 @@
-class MyForm extends React.Component {
+const textAreaStyles = {
+  width: 235,
+  margin: 5
+};
+
+class MyToDoList extends React.Component {
   constructor(props) {
     super(props);
+    // change code below this line
     this.state = {
-      input: '',
-      submit: ''
-    };
-    this.handleChange = this.handleChange.bind(this);
+      userInput: '',
+      toDoList: []
+    }
+    // change code above this line
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
-  handleChange(event) {
+  handleSubmit() {
+    const itemsArray = this.state.userInput.split(',');
     this.setState({
-      input: event.target.value
+      toDoList: itemsArray
     });
   }
-  handleSubmit(event) {
-    // change code below this line
-  {event.preventDefault()};
-  this.setState({
-    submit:this.state.input
-  })
-    // change code above this line
+  handleChange(e) {
+    this.setState({
+      userInput: e.target.value
+    });
   }
   render() {
+    const items = this.state.toDoList.map(i => <li>{i}</li>); // change code here
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          { /* change code below this line */ }
-            <input type="text" value={this.state.input} onChange ={this.handleChange} />
-          { /* change code above this line */ }
-          <button type='submit'>Submit!</button>
-        </form>
-        { /* change code below this line */ }
-        <h1>{this.state.submit}</h1>
-        { /* change code above this line */ }
+        <textarea
+          onChange={this.handleChange}
+          value={this.state.userInput}
+          style={textAreaStyles}
+          placeholder="Separate Items With Commas" /><br />
+        <button onClick={this.handleSubmit}>Create List</button>
+        <h1>My "To Do" List:</h1>
+        <ul>
+          {items}
+        </ul>
       </div>
     );
   }
