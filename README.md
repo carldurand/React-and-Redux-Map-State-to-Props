@@ -1,22 +1,13 @@
-React: Create a Controlled Form
-The last challenge showed that React can control the internal state for certain elements like input and textarea, which makes them controlled components. This applies to other form elements as well, including the regular HTML form element.
+React: Give Sibling Elements a Unique Key Attribute
+The last challenge showed how the map method is used to dynamically render a number of elements based on user input. However, there was an important piece missing from that example. When you create an array of elements, each one needs a key attribute set to a unique value. React uses these keys to keep track of which items are added, changed, or removed. This helps make the re-rendering process more efficient when the list is modified in any way. Note that keys only need to be unique between sibling elements, they don't need to be globally unique in your application.
 
 
-The MyForm component is set up with an empty form with a submit handler. The submit handler will be called when the form is submitted.
+The code editor has an array with some front end frameworks and a stateless functional component named Frameworks(). Frameworks() needs to map the array to an unordered list, much like in the last challenge. Finish writing the map callback to return an li element for each framework in the frontEndFrameworks array. This time, make sure to give each li a key attribute, set to a unique value.
 
-We've added a button which submits the form. You can see it has the type set to submit indicating it is the button controlling the form. Add the input element in the form and set its value and onChange() attributes like the last challenge. You should then complete the handleSubmit method so that it sets the component state property submit to the current input value in the local state.
+Normally, you want to make the key something that uniquely identifies the element being rendered. As a last resort the array index may be used, but typically you should try to use a unique identification.
 
-Note:  You also must call event.preventDefault() in the submit handler, to prevent the default form submit behavior which will refresh the web page.
-
-Finally, create an h1 tag after the form which renders the submit value from the component's state. You can then type in the form and click the button (or press enter), and you should see your input rendered to the page.
-
-Passed
-MyForm should return a div element which contains a form and an h1 tag. The form should include an input and a button.
-Passed
-The state of MyForm should initialize with input and submit properties, both set to empty strings.
-Passed
-Submitting the form should run handleSubmit which should set the submit property in state equal to the current input.
-Passed
-The h1 header should render the value of the submit field from the component's state.
-Passed
-Typing in the input element should update the input property of the component's state.
+The Frameworks component should exist and render to the page.
+Frameworks should render an h1 element.
+Frameworks should render a ul element.
+The ul tag should render 6 child li elements.
+Each list item element should have a unique key attribute.
