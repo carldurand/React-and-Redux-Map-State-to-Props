@@ -1,13 +1,20 @@
-React: Give Sibling Elements a Unique Key Attribute
-The last challenge showed how the map method is used to dynamically render a number of elements based on user input. However, there was an important piece missing from that example. When you create an array of elements, each one needs a key attribute set to a unique value. React uses these keys to keep track of which items are added, changed, or removed. This helps make the re-rendering process more efficient when the list is modified in any way. Note that keys only need to be unique between sibling elements, they don't need to be globally unique in your application.
+React and Redux: Extract State Logic to Redux
+Now that you finished the React component, you need to move the logic it's performing locally in its state into Redux. This is the first step to connect the simple React app to Redux. The only functionality your app has is to add new messages from the user to an unordered list. The example is simple in order to demonstrate how React and Redux work together.
 
 
-The code editor has an array with some front end frameworks and a stateless functional component named Frameworks(). Frameworks() needs to map the array to an unordered list, much like in the last challenge. Finish writing the map callback to return an li element for each framework in the frontEndFrameworks array. This time, make sure to give each li a key attribute, set to a unique value.
+First, define an action type 'ADD' and set it to a const ADD. Next, define an action creator addMessage() which creates the action to add a message. You'll need to pass a message to this action creator and include the message in the returned action.
 
-Normally, you want to make the key something that uniquely identifies the element being rendered. As a last resort the array index may be used, but typically you should try to use a unique identification.
+Then create a reducer called messageReducer() that handles the state for the messages. The initial state should equal an empty array. This reducer should add a message to the array of messages held in state, or return the current state. Finally, create your Redux store and pass it the reducer.
 
-The Frameworks component should exist and render to the page.
-Frameworks should render an h1 element.
-Frameworks should render a ul element.
-The ul tag should render 6 child li elements.
-Each list item element should have a unique key attribute.
+Passed
+The const ADD should exist and hold a value equal to the string ADD
+Passed
+The action creator addMessage should return an object with type equal to ADD and message equal to the message that is passed in.
+Passed
+messageReducer should be a function.
+Passed
+The store should exist and have an initial state set to an empty array.
+Passed
+Dispatching addMessage against the store should immutably add a new message to the array of messages held in state.
+Passed
+The messageReducer should return the current state if called with any other actions.
